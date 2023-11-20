@@ -89,10 +89,14 @@ public class TicketManager {
             case 3:
                 System.out.print("\t Enter Ticket Number : ");
                 ticketNumber = scanner.nextInt();
+                System.out.println();
+                System.out.print("\t Enter Ticket Subject : ");
+                String ticketSubject = scanner.next();
+                
                 try {
                     DataContent dataContent = new DataContent();
                     Ticket newTicket = new Ticket();
-                    newTicket.setSubject("Sample ticket: Meet the ticket");
+                    newTicket.setSubject(ticketSubject);
                     dataContent.setTicket(newTicket);
                     Ticket ticket = ticketService.updateTicket(ticketNumber, dataContent).block();
 
