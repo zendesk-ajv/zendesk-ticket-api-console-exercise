@@ -58,11 +58,15 @@ public class TicketManager {
         switch (choice) {
             case 1:
                 String leftAlignFormat = getLeftAlignFormat();
-                ticketList = ticketService.getAllTicket().collectList().block().get(0).getTickets();
-                ticketList.stream().forEach(ticket -> {
-                    System.out.format(leftAlignFormat, ticket.getId(), ticket.getCreated_at(), ticket.getPriority(),
-                            ticket.getStatus(), ticket.getSubject());
-                });
+                try {
+                    ticketList = ticketService.getAllTicket().collectList().block().get(0).getTickets();
+                    ticketList.stream().forEach(ticket -> {
+                        System.out.format(leftAlignFormat, ticket.getId(), ticket.getCreated_at(), ticket.getPriority(),
+                                ticket.getStatus(), ticket.getSubject());
+                    });
+                } catch (Exception e) {
+                    System.out.println("Something went wrong..");
+                }
                 System.out.println("\n\n\n");
                 // showMenu();
 
