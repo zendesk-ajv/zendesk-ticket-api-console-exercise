@@ -22,6 +22,14 @@ public class TicketValidator {
     }
 
     public void validatePageNumberAndSize(int pageNumber, int pageSize) {
+
+        if (pageNumber < 1) {
+            throw new IllegalArgumentException("Page number must be greater than or equal to 1");
+        }
+        
+        if (pageSize < 1) {
+            throw new IllegalArgumentException("Page size must be greater than or equal to 1");
+        }
     }
 
 }
